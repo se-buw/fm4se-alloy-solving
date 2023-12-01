@@ -19,7 +19,7 @@ jobs:
           fetch-depth: 0
 
       - name: Execute tests
-        run: curl -s https://gist.githubusercontent.com/soaibsafi/b65e46049a399c971f5a7a8f141c9bc2/raw/f1ed6003615299dd6dd1f7d9e18ed8ac1b56ee99/alloy-solving-tests.sh | bash -s
+        run: curl -s https://gist.githubusercontent.com/soaibsafi/171e658d5786cba2d2a9eb4e991500f1/raw/fccfd1232bad235f5911d52a4202290133c67430/alloy_solving_tests.sh | bash -s
     
       - name: Set up Java 17
         uses: actions/setup-java@v3
