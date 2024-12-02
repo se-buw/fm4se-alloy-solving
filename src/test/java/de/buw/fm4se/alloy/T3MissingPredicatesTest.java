@@ -12,10 +12,13 @@ import edu.mit.csail.sdg.translator.TranslateAlloyToKodkod;
 import edu.mit.csail.sdg.translator.A4Options.SatSolver;
 
 import static org.junit.jupiter.api.Assertions.*;
-
+import org.junit.jupiter.api.MethodOrderer;
+import org.junit.jupiter.api.Order;
+import org.junit.jupiter.api.TestMethodOrder;
 import org.junit.jupiter.api.BeforeAll;
 
-class Task3Test {
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
+class T3MissingPredicatesTest {
 	private static A4Reporter rep;
 	private static A4Options opt;
 
@@ -28,18 +31,21 @@ class Task3Test {
 
 
 	@Test
+	@Order(1)	
 	void checkInv1SomeTrashedFile () {
 		String addition = "one sig X in Trash {}";
 		assertFalse(checkSat("inv1", addition), "A file in Trash should be a violation.");
 	}
 
 	@Test
+	@Order(2)
 	void checkInv1SomeFilesExist () {
 		String addition = "fact { some File }";
 		assertTrue(checkSat("inv1", addition), "No files can exist. This constraint is too strong.");
 	}
 
 	@Test
+	@Order(3)
 	void checkInv2AFileNotDeleted () {
 		String addition = "one sig F1, F2 extends File {}\n" + 
 				"fact { Trash = F1}";
@@ -47,12 +53,14 @@ class Task3Test {
 	}
 
 	@Test
+	@Order(4)
 	void checkInv2PossibleToDeleteFiles () {
 		String addition = "";
 		assertTrue(checkSat("inv2", addition), "The constraint is not satisfiable.");
 	}
 
 	@Test
+	@Order(5)
 	void checkInv3AFileIsDeleted () {
 		String addition = "one sig F1, F2 extends File {}\n" + 
 				"fact { Trash = F1}";
@@ -60,12 +68,14 @@ class Task3Test {
 	}
 
 	@Test
+	@Order(6)
 	void checkInv3NoDeletedFiles () {
 		String addition = "fact { no Trash }";
 		assertFalse(checkSat("inv3", addition), "Empty trash should be a violation.");
 	}
 
 	@Test
+	@Order(7)
 	void checkInv4AProtectedFileIsDeleted () {
 		String addition = "one sig F1 extends File {}\n" + 
 				"fact { F1 in Trash and F1 in Protected }";
@@ -73,6 +83,7 @@ class Task3Test {
 	}
 
 	@Test
+	@Order(8)
 	void checkInv4SomeDeletedFile () {
 		String addition = "one sig F1 extends File {}\n" + 
 				"fact { F1 in Trash }";
@@ -80,6 +91,7 @@ class Task3Test {
 	}
 
 	@Test
+	@Order(9)
 	void checkInv5AnUnprotectedAndNotDeletedFile () {
 		String addition = "one sig F1 extends File {}\n" + 
 				"fact { not (F1 in Trash) and not (F1 in Protected) }";
@@ -87,6 +99,7 @@ class Task3Test {
 	}
 
 	@Test
+	@Order(10)
 	void checkInv5SomeDeletedUnprotectedFile () {
 		String addition = "one sig F1 extends File {}\n" + 
 				"fact { F1 in Trash and not (F1 in Protected) }";
@@ -94,6 +107,7 @@ class Task3Test {
 	}
 
 	@Test
+	@Order(11)
 	void checkInv6FileLinkingToTwoFiles () {
 		String addition = "one sig F1, F2, F3 extends File {}\n" + 
 				"fact { F1 -> F2 in link and F1 -> F3 in link }";
@@ -101,6 +115,7 @@ class Task3Test {
 	}
 
 	@Test
+	@Order(12)
 	void checkInv6FilesWithNoLinksPossible () {
 		String addition = "one sig F1 extends File {}\n" + 
 				"fact { no F1.link }";
@@ -108,6 +123,7 @@ class Task3Test {
 	}
 
 	@Test
+	@Order(13)
 	void checkInv6FilesWithOneLinkPossible () {
 		String addition = "one sig F1, F2 extends File {}\n" + 
 				"fact { F2 = F1.link }";
@@ -115,6 +131,7 @@ class Task3Test {
 	}
 
 	@Test
+	@Order(14)
 	void checkInv7ALinkedFileIsDeleted () {
 		String addition = "one sig F1, F2 extends File {}\n" + 
 				"fact { F2 in Trash and F1 -> F2 in link }";
@@ -122,6 +139,7 @@ class Task3Test {
 	}
 
 	@Test
+	@Order(15)
 	void checkInv7LinkeFilesExist () {
 		String addition = "one sig F1, F2 extends File {}\n" + 
 				"fact { F1 -> F2 in link }";
@@ -129,6 +147,7 @@ class Task3Test {
 	}
 
 	@Test
+	@Order(16)
 	void checkInv8TwoFilesWithNoLinks () {
 		String addition = "one sig F1, F2 extends File {}\n" + 
 				"fact { File = F1 + F2 and no F1.link and no F2.link }";
@@ -136,6 +155,7 @@ class Task3Test {
 	}
 
 	@Test
+	@Order(17)
 	void checkInv8LinkeFilesExist () {
 		String addition = "one sig F1, F2 extends File {}\n" + 
 				"fact { F1 -> F2 in link }";
@@ -143,6 +163,7 @@ class Task3Test {
 	}
 
 	@Test
+	@Order(18)
 	void checkInv9ConsecutiveLinkChain () {
 		String addition = "one sig F1, F2, F3 extends File {}\n" + 
 				"fact { F1 -> F2 in link and F2 -> F3 in link }";
@@ -150,6 +171,7 @@ class Task3Test {
 	}
 
 	@Test
+	@Order(19)
 	void checkInv9LinkeFilesExist () {
 		String addition = "one sig F1, F2 extends File {}\n" + 
 				"fact { F1 -> F2 in link }";
@@ -157,6 +179,7 @@ class Task3Test {
 	}
 
 	@Test
+	@Order(20)
 	void checkInv10DeletedLinkWithoutDeletedTarget () {
 		String addition = "one sig F1, F2 extends File {}\n" + 
 				"fact { F2 in F1.link and F1 in Trash and not (F2 in Trash) }";
@@ -164,6 +187,7 @@ class Task3Test {
 	}
 
 	@Test
+	@Order(21)
 	void checkInv10LinkeAndDeletedFilesExist () {
 		String addition = "one sig F1, F2 extends File {}\n" + 
 				"fact { F1 -> F2 in link and F1 + F2 in Trash }";

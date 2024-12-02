@@ -13,10 +13,13 @@ import edu.mit.csail.sdg.translator.TranslateAlloyToKodkod;
 import edu.mit.csail.sdg.translator.A4Options.SatSolver;
 
 import static org.junit.jupiter.api.Assertions.*;
-
+import org.junit.jupiter.api.MethodOrderer;
+import org.junit.jupiter.api.Order;
+import org.junit.jupiter.api.TestMethodOrder;
 import org.junit.jupiter.api.BeforeAll;
 
-class Task1Test {
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
+class T1CreateAlloyModelTest {
 	private static A4Reporter rep;
 	private static A4Options opt;
 
@@ -28,12 +31,14 @@ class Task1Test {
 	}
 
 	@Test
+	@Order(1)
 	void checkNumberOfSignatures() {
 		Module world = getModule(Tasks.task_1);
 		assertTrue(world.getAllSigs().size() >= 4, "Number of signatures is less than 4");
 	}
 
 	@Test
+	@Order(2)
 	void checkNumberOfFieldsPerSignature() {
 		Module world = getModule(Tasks.task_1);
 		for (Sig s : world.getAllSigs()) {
@@ -42,6 +47,7 @@ class Task1Test {
 	}
 
 	@Test
+	@Order(3)
 	void checkInheritance() {
 		Module world = getModule(Tasks.task_1);
 		for (Sig s : world.getAllSigs()) {
@@ -53,24 +59,28 @@ class Task1Test {
 	}
 
 	@Test
+	@Order(4)
 	void checkNumberOfFacts() {
 		Module world = getModule(Tasks.task_1);
 		assertTrue(world.getAllFacts().size() >= 2, "Number of facts is less than 2");
 	}
 
 	@Test
+	@Order(5)
 	void checkNumberOfPredicates() {
 		Module world = getModule(Tasks.task_1);
 		assertTrue(world.getAllFunc().size() >= 2, "Number of predicates is less than 2");
 	}
 
 	@Test
+	@Order(6)
 	void checkNumberOfRunCommands () {
 		Module world = getModule(Tasks.task_1);
 		assertTrue(world.getAllCommands().size() >= 2, "Number of run commands is less than 2");		
 	}
 
 	@Test
+	@Order(7)
 	void checkRunCommands () {
 		boolean foundSat = false;
 		boolean foundSatTwoInst = false;

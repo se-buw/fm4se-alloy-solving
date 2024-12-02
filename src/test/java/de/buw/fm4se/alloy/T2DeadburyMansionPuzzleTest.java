@@ -12,10 +12,13 @@ import edu.mit.csail.sdg.translator.TranslateAlloyToKodkod;
 import edu.mit.csail.sdg.translator.A4Options.SatSolver;
 
 import static org.junit.jupiter.api.Assertions.*;
-
+import org.junit.jupiter.api.MethodOrderer;
+import org.junit.jupiter.api.Order;
+import org.junit.jupiter.api.TestMethodOrder;
 import org.junit.jupiter.api.BeforeAll;
 
-class Task2Test {
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
+class T2DeadburyMansionPuzzleTest {
 	private static A4Reporter rep;
 	private static A4Options opt;
 
@@ -27,6 +30,7 @@ class Task2Test {
 	}
 
 	@Test
+	@Order(1)
 	void checkRunCommands () {
 		Module world = getModule(Tasks.task_2);
 		assertEquals(1, world.getAllCommands().size(), "Number of run commands is not 1");
@@ -38,6 +42,7 @@ class Task2Test {
 	}
 
 	@Test
+	@Order(2)
 	void checkKillerOfAgatha () {
 		String code = FmPlay.getCodeFromPermalink(Tasks.task_2);
 		code += "\n\nfact agathaKiller {\n" + 
@@ -53,6 +58,7 @@ class Task2Test {
 	}
 
 	@Test
+	@Order(3)
 	void checkNotKillerOfAgatha () {
 		String code = FmPlay.getCodeFromPermalink(Tasks.task_2);
 		code += "\n\nfact agathaKiller {\n" + 
