@@ -25,7 +25,7 @@ Start from this **[Template](https://play.formal-methods.net/?check=ALS&p=lumber
 
 ## Task 2
 
-Implement the constraints of the Deadbury Mansion puyzzle in Alloy.
+Implement the constraints of the Deadbury Mansion puzzle in Alloy.
 * The signatures are all created for you.
 * The relations are already defined as fields in the signature `Person`.
 
@@ -52,6 +52,6 @@ Start from this **[Template](https://play.formal-methods.net/?check=ALS&p=poncho
 
 Implement the missing predicates in this Alloy model. The model describes a simple file system and the deletion policies of files.
 
-Start from this **[model](https://alloy.formal-methods.net/?check=ALS&p=thirty-fog-cackle-jacket)** and complete the predicates `inv1` to `inv10`.
+Start from this **[model](https://play.formal-methods.net/?check=ALS&p=thirty-fog-cackle-jacket)** and complete the predicates `inv1` to `inv10`.
 
 **Submission:** Submit the permalink in [src/main/java/de/buw/fm4se/alloy/Tasks.java (task_3)](src/main/java/de/buw/fm4se/alloy/Tasks.java)
