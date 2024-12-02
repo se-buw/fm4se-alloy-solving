@@ -3,7 +3,7 @@
     {
       "name": "Task 1",
       "setup": "chmod +x gradlew",
-      "run": "./gradlew test --tests 'Task1Test' --console=rich",
+      "run": "./gradlew test --tests 'T1CreateAlloyModelTest' --console=rich",
       "input": "",
       "output": "",
       "comparison": "included",
@@ -13,7 +13,7 @@
     {
       "name": "Task 2",
       "setup": "chmod +x gradlew",
-      "run": "./gradlew test --tests 'Task2Test' --console=rich",
+      "run": "./gradlew test --tests 'T2DeadburyMansionPuzzleTest' --console=rich",
       "input": "",
       "output": "",
       "comparison": "included",
@@ -23,7 +23,7 @@
     {
       "name": "Task 3",
       "setup": "chmod +x gradlew",
-      "run": "./gradlew test --tests 'Task3Test' --console=rich",
+      "run": "./gradlew test --tests 'T3MissingPredicatesTest' --console=rich",
       "input": "",
       "output": "",
       "comparison": "included",
