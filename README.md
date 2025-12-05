@@ -31,18 +31,18 @@ Implement the constraints of the following IT security puzzle in Alloy. There ar
 
 Constraints:
 1. Admins have security levels higher than other admins. 
-2. Security levels are an irreflexive and transitive relationship between admins.
-3. Not two admins have the same security level.
+2. Security levels form an irreflexive and transitive relationship between admins.
+3. No two admins have the same security level.
 4. Admins may trust other admins.
 5. Everybody trusts at least one admin.
 6. No admin trusts an admin with a lower security level.
 7. Alice trusts at least everyone who trusts her.
-8. Bob trusts everyone who has a higher security level than Charlie.
+8. Bob trusts only those who have a higher security level than Charlie.
 9. Charlie trusts no one who trusts Bob.
 10. The bad actor trusts only those who do not trust Alice.
 
 
-Start from this **[Template](https://play.formal-methods.net/?check=ALS&p=pasted-budget-chosen-spray)**.
+Start from this **[Template](https://play.formal-methods.net/?check=ALS&p=clench-virus-lesser-sleep)**.
 
 **Submission:** Submit the permalink in [src/main/java/de/buw/fm4se/alloy/Tasks.java (task_2)](src/main/java/de/buw/fm4se/alloy/Tasks.java)
 
