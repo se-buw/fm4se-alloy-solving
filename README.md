@@ -25,26 +25,24 @@ Start from this **[Template](https://play.formal-methods.net/?check=ALS&p=lumber
 
 ## Task 2
 
-Implement the constraints of the Deadbury Mansion puzzle in Alloy.
-* The signatures are all created for you.
-* The relations are already defined as fields in the signature `Person`.
+Implement the constraints of the following IT security puzzle in Alloy. There are three administrators working at a data center. One of them is a bad actor. Find out which one.
+* The signature for all `Admin`s and for the `BadActor` are already created for you.
+* Missing relations should be defined inside siganture `Admin`. 
 
-$$
-\begin{equation}
-\begin{aligned}
-  \exists x \cdot killed(x, Agatha) ... (1)  \\ 
-  \forall x \cdot \forall y \cdot killed(x,y) \Rightarrow (hates(x,y)\wedge\neg richer(x,y)) ... (2) \\ 
-  \forall x \cdot hates(Agatha, x) \Rightarrow \neg hates(Charles, x) ... (3) \\
-  hates(Agatha, Agatha) \wedge hates(Agatha, Charles) ... (4) \\
-  \forall x \cdot \neg richer(x, Agatha) \Rightarrow hates(Butler, x) ... (5) \\
-  \forall x \cdot hates(Agatha, x) \Rightarrow hates(Butler, x) ... (6) \\
-  \forall x \cdot \exists y \cdot \neg hates(x,y) ... (7)
-\end{aligned}
-\end{equation}
-$$
+Constraints:
+1. Admins have security levels higher than other admins. 
+2. Security levels are an irreflexive and transitive relationship between admins.
+3. Not two admins have the same security level.
+4. Admins may trust other admins.
+5. Everybody trusts at least one admin.
+6. No admin trusts an admin with a lower security level.
+7. Alice trusts at least everyone who trusts her.
+8. Bob trusts everyone who has a higher security level than Charlie.
+9. Charlie trusts no one who trusts Bob.
+10. The bad actor trusts only those who do not trust Alice.
 
 
-Start from this **[Template](https://play.formal-methods.net/?check=ALS&p=poncho-wanted-single-legume)**.
+Start from this **[Template](https://play.formal-methods.net/?check=ALS&p=pasted-budget-chosen-spray)**.
 
 **Submission:** Submit the permalink in [src/main/java/de/buw/fm4se/alloy/Tasks.java (task_2)](src/main/java/de/buw/fm4se/alloy/Tasks.java)
 
