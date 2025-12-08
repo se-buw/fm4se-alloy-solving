@@ -1,11 +1,10 @@
 name: GitHub Classroom Workflow
 
-on: 
+on:
   push:
     branches:
-    - '*'
-    - '!badges'
-
+      - "*"
+      - "!badges"
 
 jobs:
   build:
@@ -20,36 +19,35 @@ jobs:
           fetch-depth: 0
 
       - name: Set up Java 17
-        uses: actions/setup-java@v3
+        uses: actions/setup-java@v5
         with:
-          java-version: '17'
-          distribution: 'adopt'
+          java-version: "21"
+          distribution: "adopt"
       - name: Display Java version
         run: java -version
-      
-      
+
       - name: Grading
         uses: education/autograding@v1
         id: autograder
         continue-on-error: true
-        
+
       - name: Set up Python
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v6
         with:
-          python-version: 3.8
-  
+          python-version: "3.13"
+
       # Generate Report
       - run: python generate_report.py
-  
+
       # switch to badges branch
       - run: git checkout badges || git checkout -b badges
-      
+
       # create points bar
       - name: points bar
         uses: markpatterson27/points-bar@v1
         with:
           points: ${{ steps.autograder.outputs.points }}
-          path: '.github/badges/points-bar.svg'
+          path: ".github/badges/points-bar.svg"
 
       # commit and push badges if badges have changed
       - name: Commit changes to points bar
