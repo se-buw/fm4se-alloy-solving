@@ -13,7 +13,7 @@
     {
       "name": "Task 2",
       "setup": "chmod +x gradlew",
-      "run": "./gradlew test --tests 'T2DeadburyMansionPuzzleTest' --console=rich",
+      "run": "./gradlew test --tests 'T2ItSecurityPuzzleTest' --console=rich",
       "input": "",
       "output": "",
       "comparison": "included",
