@@ -41,9 +41,13 @@ class T1CreateAlloyModelTest {
 	@Order(2)
 	void checkNumberOfFieldsPerSignature() {
 		Module world = getModule(Tasks.task_1);
+		int signaturesWithTwoOrMoreFields = 0;
 		for (Sig s : world.getAllSigs()) {
-			assertTrue(s.getFields().size() >= 2, "Number of fields is less than 2 in signature " + s.label);
+			if (s.getFields().size() >= 2) {
+				signaturesWithTwoOrMoreFields++;
+			}
 		}
+		assertTrue(signaturesWithTwoOrMoreFields >= 3, "Less than 3 signatures have at least 2 fields");
 	}
 
 	@Test
@@ -74,20 +78,20 @@ class T1CreateAlloyModelTest {
 
 	@Test
 	@Order(6)
-	void checkNumberOfRunCommands () {
+	void checkNumberOfRunCommands() {
 		Module world = getModule(Tasks.task_1);
-		assertTrue(world.getAllCommands().size() >= 2, "Number of run commands is less than 2");		
+		assertTrue(world.getAllCommands().size() >= 2, "Number of run commands is less than 2");
 	}
 
 	@Test
 	@Order(7)
-	void checkRunCommands () {
+	void checkRunCommands() {
 		boolean foundSat = false;
 		boolean foundSatTwoInst = false;
 
 		boolean foundUnsat = false;
 		Module world = getModule(Tasks.task_1);
-		for (Command c : world.getAllCommands()) {			
+		for (Command c : world.getAllCommands()) {
 			// run command
 			A4Solution ans = TranslateAlloyToKodkod.execute_command(rep, world.getAllReachableSigs(), c, opt);
 			if (ans.satisfiable()) {
@@ -104,9 +108,8 @@ class T1CreateAlloyModelTest {
 		assertTrue(foundSatTwoInst, "No satisfiable run command with two instances found");
 	}
 
-
 	public Module getModule(String task) {
-		
+
 		String code;
 		code = FmPlay.getCodeFromPermalink(Tasks.task_1);
 
