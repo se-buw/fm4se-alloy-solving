@@ -113,10 +113,10 @@ class T2ItSecurityPuzzleTest {
 
 	@Test
 	@Order(6)
-	// 7. Alice trusts at least everyone who trusts her.
-	void checkAliceTrustsEveryoneWhoTrustsHer() {
+	// 7. Alice trusts at most those who trusts her.
+	void checkAliceTrustsAtMostThoseWhoTrustHer() {
 		String code = FmPlay.getCodeFromPermalink(Tasks.task_2);
-		code += "\n\nfact aliceTrustsEveryoneWhoTrustsHer {\n" +
+		code += "\n\nfact aliceTrustsAtMostThoseWhoTrustHer {\n" +
 				"some x : Admin | x in Alice.trusts and Alice not in x.trusts \n" +
 				"}\n";
 		Module world = CompUtil.parseEverything_fromString(rep, code);
@@ -124,7 +124,7 @@ class T2ItSecurityPuzzleTest {
 
 		A4Solution ans = TranslateAlloyToKodkod.execute_command(rep, world.getAllReachableSigs(), c, opt);
 		if (ans.satisfiable()) {
-			fail("Alice does not trust someone who distrusts her.");
+			fail("Alice trusts someone who does not trust her.");
 		}
 	}
 

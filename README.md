@@ -36,13 +36,13 @@ Constraints:
 4. Admins may trust other admins.
 5. Everybody trusts at least one admin.
 6. No admin trusts an admin with a lower security level.
-7. Alice trusts at least everyone who trusts her.
+7. Alice trusts at most those who trusts her.
 8. Bob trusts only those who have a higher security level than Charlie.
 9. Charlie trusts no one who trusts Bob.
 10. The bad actor trusts only those who do not trust Alice.
 
 
-Start from this **[Template](https://play.formal-methods.net/?check=ALS&p=clench-virus-lesser-sleep)**.
+Start from this **[Template](https://play.formal-methods.net/?check=ALS&p=balmy-squall-speed-driven)**.
 
 **Submission:** Submit the permalink in [src/main/java/de/buw/fm4se/alloy/Tasks.java (task_2)](src/main/java/de/buw/fm4se/alloy/Tasks.java)
 
